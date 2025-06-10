@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="background-overlay"></div>
     <header>
         <h1>Welcome to My Portfolio</h1>
         <p>Explore my work and projects below!</p>
@@ -32,27 +33,40 @@
                         <p>Short description of Project 3.</p>
                     </div>
                 </div>
-                <button class="carousel-button prev" onclick="prevSlide()" aria-label="Previous">&#10094;</button>
-                <button class="carousel-button next" onclick="nextSlide()" aria-label="Next">&#10095;</button>
             </div>
-        </section>
-        <section class="about-section">
-            <h2>About Me</h2>
-            <p>
-                Hi! I'm Danny, a passionate developer. I love building web applications and exploring new technologies.
-                Check out my projects above or connect with me below!
-            </p>
         </section>
         <section class="contact-section">
             <h2>Contact</h2>
             <p>
-                <a href="mailto:your.email@example.com">your.email@example.com</a>
+                <a href="mailto:darkpieforce@gmail.com">darkpieforce@gmail.com</a>
             </p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2025 Danny. All rights reserved.</p>
+        <p>2025 Danny Arellano.</p>
+        <button id="aboutMeBtn" class="about-me-btn">About Me</button>
     </footer>
+    <!-- Modal for About Me -->
+    <div id="aboutMeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAboutMe">&times;</span>
+            <h2>About Me</h2>
+            <p>
+                This is a small showcase of my front-end and back-end work.
+            </p>
+        </div>
+    </div>
     <script src="carousel.js"></script>
+    <script>
+    // Modal logic for About Me
+    const aboutMeBtn = document.getElementById('aboutMeBtn');
+    const aboutMeModal = document.getElementById('aboutMeModal');
+    const closeAboutMe = document.getElementById('closeAboutMe');
+    aboutMeBtn.onclick = () => aboutMeModal.style.display = 'block';
+    closeAboutMe.onclick = () => aboutMeModal.style.display = 'none';
+    window.onclick = (event) => {
+        if (event.target === aboutMeModal) aboutMeModal.style.display = 'none';
+    };
+    </script>
 </body>
 </html>

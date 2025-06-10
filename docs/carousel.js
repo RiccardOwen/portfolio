@@ -1,29 +1,72 @@
-function initCarousel() {
+document.addEventListener('DOMContentLoaded', function () {
     const carouselItems = document.querySelectorAll('.carousel-item');
-    const nextButton = document.querySelector('.carousel-next');
-    const prevButton = document.querySelector('.carousel-prev');
     let currentIndex = 0;
 
-    function showItem(index) {
+    function updateCarousel() {
         carouselItems.forEach((item, i) => {
-            item.style.display = i === index ? 'block' : 'none';
+            item.classList.remove('active', 'left', 'right');
+            item.style.zIndex = 0;
+            item.style.opacity = 0.3;
+            item.style.transform = 'scale(0.85) translateX(0)';
         });
+
+        // Center (active) item
+        carouselItems[currentIndex].classList.add('active');
+        carouselItems[currentIndex].style.zIndex = 2;
+        carouselItems[currentIndex].style.opacity = 1;
+        carouselItems[currentIndex].style.transform = 'scale(1) translateX(0)';
+
+        // Left item
+        const leftIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+        carouselItems[leftIndex].classList.add('left');
+        carouselItems[leftIndex].style.zIndex = 1;
+        carouselItems[leftIndex].style.transform = 'scale(0.85) translateX(-60%)';
+
+        // Right item
+        const rightIndex = (currentIndex + 1) % carouselItems.length;
+        carouselItems[rightIndex].classList.add('right');
+        carouselItems[rightIndex].style.zIndex = 1;
+        carouselItems[rightIndex].style.transform = 'scale(0.85) translateX(60%)';
     }
 
     function nextItem() {
         currentIndex = (currentIndex + 1) % carouselItems.length;
-        showItem(currentIndex);
+        updateCarousel();
     }
 
     function prevItem() {
         currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-        showItem(currentIndex);
+        updateCarousel();
     }
 
-    nextButton.addEventListener('click', nextItem);
-    prevButton.addEventListener('click', prevItem);
+    // mouse wheel control
+    document.querySelector('.carousel').addEventListener('wheel', function (e) {
+        e.preventDefault();
+        if (e.deltaY > 0) {
+            nextItem();
+        } else {
+            prevItem();
+        }
+    });
 
-    showItem(currentIndex);
-}
+    //touch support
+    let startX = 0;
+    let endX = 0;
 
-document.addEventListener('DOMContentLoaded', initCarousel);
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', function(e) {
+        endX = e.changedTouches[0].clientX;
+        if (startX - endX > 50) {
+            nextItem();
+        } else if (endX - startX > 50) {
+            prevItem();
+        }
+    });
+
+    // Initial state
+    updateCarousel();
+});

@@ -1,8 +1,32 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('assets/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: 0;
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Make sure content is above the background */
+header, main, footer {
+    position: relative;
+    z-index: 1;
+    background: rgba(0,0,0,0.5);
+    margin: 0 auto 1.5rem auto;
+    border-radius: 12px;
+    max-width: 800px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 
 .carousel {
@@ -19,14 +43,48 @@ body {
     transition: transform 0.5s ease;
 }
 
+.carousel-items {
+    position: relative;
+    width: 400px;
+    height: 260px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
 .carousel-item {
-    min-width: 100%;
-    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 260px;
+    transition: 
+        transform 0.5s cubic-bezier(.4,2,.6,1), 
+        opacity 0.5s cubic-bezier(.4,2,.6,1), 
+        z-index 0s;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.carousel-item.left,
+.carousel-item.right {
+    opacity: 0.5;
+    z-index: 1;
 }
 
 .carousel img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 
 .carousel-controls {
@@ -49,4 +107,51 @@ body {
 
 .carousel-button:hover {
     background-color: rgba(255, 255, 255, 1);
+}
+
+/* Add to your styles.css for modal and button styling */
+/* filepath: c:\Users\danny\OneDrive\Documents\GitHub\portfolio\docs\styles.css */
+.about-me-btn {
+    margin-left: 1rem;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.about-me-btn:hover {
+    background: #444;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: #222;
+    color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+.close {
+    position: absolute;
+    top: 0.7rem;
+    right: 1rem;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
 }
