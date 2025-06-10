@@ -3,19 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carousel Webpage</title>
+    <title>Welcome to My Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="carousel">
-        <div class="carousel-items">
-            <div class="carousel-item active">Item 1</div>
-            <div class="carousel-item">Item 2</div>
-            <div class="carousel-item">Item 3</div>
-        </div>
-        <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
-        <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
-    </div>
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Explore my work and projects below!</p>
+    </header>
+    <main>
+        <section class="carousel-section">
+            <h2>Featured Projects</h2>
+            <div class="carousel">
+                <div class="carousel-items">
+                    <div class="carousel-item active">
+                        <img src="https://placehold.co/400x200?text=Project+1" alt="Project 1">
+                        <h3>Project 1</h3>
+                        <p>Short description of Project 1.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/400x200?text=Project+2" alt="Project 2">
+                        <h3>Project 2</h3>
+                        <p>Short description of Project 2.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/400x200?text=Project+3" alt="Project 3">
+                        <h3>Project 3</h3>
+                        <p>Short description of Project 3.</p>
+                    </div>
+                </div>
+                <button class="carousel-button prev" onclick="prevSlide()" aria-label="Previous">&#10094;</button>
+                <button class="carousel-button next" onclick="nextSlide()" aria-label="Next">&#10095;</button>
+            </div>
+        </section>
+        <section class="about-section">
+            <h2>About Me</h2>
+            <p>
+                Hi! I'm Danny, a passionate developer. I love building web applications and exploring new technologies.
+                Check out my projects above or connect with me below!
+            </p>
+        </section>
+        <section class="contact-section">
+            <h2>Contact</h2>
+            <p>
+                <a href="mailto:your.email@example.com">your.email@example.com</a>
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Danny. All rights reserved.</p>
+    </footer>
     <script src="carousel.js"></script>
 </body>
 </html>
