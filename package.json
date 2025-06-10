@@ -1,0 +1,16 @@
+{
+  "name": "carousel-webpage",
+  "version": "1.0.0",
+  "description": "A simple webpage with a functioning carousel.",
+  "main": "src/carousel.js",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "keywords": [
+    "carousel",
+    "webpage",
+    "github-pages"
+  ],
+  "author": "",
+  "license": "ISC"
+}
