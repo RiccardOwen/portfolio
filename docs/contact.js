@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         statusDiv.style.color = '#90ee90';
 
         // Replace with your deployed backend URL when live
-        const backendUrl = 'http://localhost:3000/api/contact';
+        const backendUrl = 'https://portfolio-contact-backend-sqqy.onrender.com/api/contact';
 
         const data = {
             name: form.name.value,
